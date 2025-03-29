@@ -75,7 +75,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   testApi() {
-    //this.weatherForecastService.getTokenAndCallApi();
+    this.weatherForecastService.getTokenAndCallApi();
   }
 
   ngOnDestroy(): void {
