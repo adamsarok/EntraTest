@@ -266,3 +266,4 @@ appsettings.Development.json
 docker-compose.override.yml
 
 cache/
+data/

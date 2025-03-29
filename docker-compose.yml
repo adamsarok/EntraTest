@@ -1,0 +1,39 @@
+services:
+  api:
+    image: ${DOCKER_REGISTRY-}api
+    ports:
+      - '8080:8080'    
+      - '8081:8081'  
+    build:
+      context: .
+      dockerfile: web-api/Dockerfile
+    networks:
+      - app-network
+  client:
+    image: ${DOCKER_REGISTRY-}client
+    ports:
+      - '4200:80'    
+      - '4201:443'  
+    build:
+      context: entra-test-ng
+      dockerfile: Dockerfile
+    networks:
+      - app-network
+  nginx-proxy-manager:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      - '80:80'    
+      - '443:443'  
+      - '81:81'    
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+    environment:
+      - TZ=Europe/London
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

@@ -24,7 +24,7 @@ export class WeatherForecastService {
             console.log(token);
             // Use the token to call your API
             this.http
-              .get("https://localhost:44347/weatherforecast", {
+              .get("https://localhost:8081/weatherforecast", {
                 headers: { Authorization: `Bearer ${token}` },
               })
               .subscribe({

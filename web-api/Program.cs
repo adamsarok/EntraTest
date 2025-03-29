@@ -15,11 +15,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 		options.TokenValidationParameters.ValidateAudience = true;
 		options.TokenValidationParameters.ValidAudience = "da690e01-d4e2-4d14-b633-ded29a7e7a7d";
 	}, options => { builder.Configuration.Bind("AzureAd", options); });
-	//.EnableTokenAcquisitionToCallDownstreamApi(options => {
-	//	options.
-	//})
-	////.AddMicrosoftGraph()
-	//.AddInMemoryTokenCaches();
 
 
 
@@ -30,6 +25,7 @@ builder.Services.AddCors(options => {
 			   .AllowAnyHeader();
 	});
 });
+
 
 // Configure authorization
 builder.Services.AddAuthorization(config => {
